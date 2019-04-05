@@ -21,6 +21,7 @@ namespace SimpleThreadingDemo
             for (int i = 1; i <= countLimit; i++)
             {
                 Console.WriteLine("Thread: {0}, Count {1}", Thread.CurrentThread.ManagedThreadId, i);
+                Thread.Sleep(10);
             }
         }
     }
