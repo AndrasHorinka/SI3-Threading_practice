@@ -11,7 +11,14 @@ namespace SimpleThreadingDemo
     {
         static void Main(string[] args)
         {
-            Counting();
+            Thread thread1 = new Thread(Counting);
+            Thread thread2 = new Thread(Counting);
+
+            thread1.Start();
+            thread2.Start();
+
+            thread1.Join();
+            thread2.Join();   
         }
 
 
@@ -21,7 +28,7 @@ namespace SimpleThreadingDemo
             for (int i = 1; i <= countLimit; i++)
             {
                 Console.WriteLine("Thread: {0}, Count {1}", Thread.CurrentThread.ManagedThreadId, i);
-                Thread.Sleep(10);
+                Thread.Sleep(100);
             }
         }
     }
