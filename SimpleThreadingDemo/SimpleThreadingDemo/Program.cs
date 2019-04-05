@@ -11,15 +11,16 @@ namespace SimpleThreadingDemo
     {
         static void Main(string[] args)
         {
+            Counting();
         }
 
 
         public static void Counting()
         {
             int countLimit = 10;
-            for (int i = 0; i < countLimit; i++)
+            for (int i = 1; i <= countLimit; i++)
             {
-                Console.WriteLine("Thread: {}, Count {}", Thread.CurrentThread.ManagedThreadId, i);
+                Console.WriteLine("Thread: {0}, Count {1}", Thread.CurrentThread.ManagedThreadId, i);
             }
         }
     }
