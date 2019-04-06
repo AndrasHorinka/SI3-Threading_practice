@@ -20,8 +20,7 @@ namespace SimpleThreadingDemo
             thread1.Join();
             thread2.Join();   
         }
-
-
+        
         public static void Counting()
         {
             int countLimit = 10;
