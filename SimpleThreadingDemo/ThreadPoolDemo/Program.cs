@@ -15,6 +15,7 @@ namespace ThreadPoolDemo
 
             try
             {
+                //eloszor lefut, de akkor sem az összes, utána viszont nem!!
                 ThreadPool.QueueUserWorkItem(thread, "elso text");
                 ThreadPool.QueueUserWorkItem(thread, "masodik text");
                 ThreadPool.QueueUserWorkItem(thread, "harmadik text");
