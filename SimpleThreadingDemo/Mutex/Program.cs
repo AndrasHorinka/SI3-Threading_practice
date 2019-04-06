@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SingleInstance
 {
@@ -20,7 +16,8 @@ namespace SingleInstance
                 try
                 {
                     mutex = Mutex.OpenExisting(mutexName);
-                    mutex.ReleaseMutex();
+                    Console.WriteLine("test");
+                    //mutex.ReleaseMutex();
                 }
                 catch (WaitHandleCannotBeOpenedException e)
                 {
@@ -28,8 +25,6 @@ namespace SingleInstance
                     mutex = Mutex.OpenExisting(mutexName);
                 }
             }
-
-
         }
     }
 }
