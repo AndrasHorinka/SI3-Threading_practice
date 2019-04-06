@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleInstance", "Mutex\Sin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadPoolDemo", "ThreadPoolDemo\ThreadPoolDemo.csproj", "{E15F2AA0-A571-430A-B3C3-3BEA0D244D7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializePeople", "SerializePeople\SerializePeople.csproj", "{CDCE7938-123D-4F77-B238-72078BAE6981}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E15F2AA0-A571-430A-B3C3-3BEA0D244D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E15F2AA0-A571-430A-B3C3-3BEA0D244D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E15F2AA0-A571-430A-B3C3-3BEA0D244D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDCE7938-123D-4F77-B238-72078BAE6981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCE7938-123D-4F77-B238-72078BAE6981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCE7938-123D-4F77-B238-72078BAE6981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCE7938-123D-4F77-B238-72078BAE6981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
