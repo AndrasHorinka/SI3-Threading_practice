@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SerializePeople
 {
     [Serializable]
-    class Person
+    public class Person
     {
         private string _name;
         private DateTime _birthDate;
