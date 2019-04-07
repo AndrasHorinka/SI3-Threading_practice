@@ -29,20 +29,22 @@ namespace SerializePeople.Test
         [Test]
         public void Test_ToStringOfPerson()
         {
-            string expectedResult = @"Name of the person is: John born on the 2000-10-01";
-            Assert.That(serialPeople.p.ToString(), Is.EqualTo(expectedResult));
+            DateTime bornYear = new DateTime(2000, 10, 1);
+            string expectedResult = @"Name of the person is: John born on the " + bornYear.ToString();
+            string personToString = serialPeople.p.ToString();
+            Assert.That(personToString, Is.EqualTo(expectedResult));
         }
 
         [Test]
         public void Test_PeopleSerialization()
         {
-            if (File.Exists("streamedPerson.*"))
+            if (File.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat"))
             {
-                File.Delete("streamedPerson.*");
+                File.Delete(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
             }
 
-            serialPeople.p.Serialize("streamedPerson");
-            FileAssert.Exists("streamedPerson");
+            serialPeople.p.Serialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
+            FileAssert.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
         }
 
         [OneTimeTearDown]

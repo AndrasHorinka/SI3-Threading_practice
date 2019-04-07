@@ -53,9 +53,17 @@ namespace SerializePeople
         public void Serialize(string output)
         {
 
+            FileStream fileStream = null;
+            try
+            {
+                fileStream = new FileStream(output, FileMode.Create);
+            } 
+            catch (UnauthorizedAccessException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
 
-
-            FileStream fileStream = new FileStream(output, FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             try
             {
