@@ -55,6 +55,8 @@ namespace SerializePeople.Test
             Person p = Person.DeSerialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
 
             bool status = true;
+            DateTime birthDate = new DateTime(2000, 10, 1);
+
             if (!(p is Person))
             {
                 status = false;
@@ -70,7 +72,13 @@ namespace SerializePeople.Test
                 status = false;
             }
 
-            if (p.BirthDate != new DateTime(2000, 10, 1))
+            if (p.BirthDate != birthDate)
+            {
+                status = false;
+            }
+
+            TimeSpan difference = DateTime.Today.Subtract(birthDate);
+            if (p.Age != difference.Days/365)
             {
                 status = false;
             }
