@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SerializePeople
 {
     [Serializable]
-    public class Person : IDeserializationCallback
+    public class Person : IDeserializationCallback, ISerializable
     {
         private string _name;
         private DateTime _birthDate;
@@ -48,6 +48,14 @@ namespace SerializePeople
                 Console.WriteLine(e.Message);
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public Person(SerializationInfo info, StreamingContext context)
+        {
+            _age = (int)info.GetValue("Age", typeof(int));
+            _name = (string)info.GetValue("Name", typeof(string));
+            _gender = (Gender)info.GetValue("Gender", typeof(Gender));
+            _birthDate = (DateTime)info.GetValue("BirthDate", typeof(DateTime));
         }
 
         public void Serialize(string output)
@@ -136,6 +144,14 @@ namespace SerializePeople
                 Console.WriteLine(e.Message);
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Name", _name, typeof(string));
+            info.AddValue("BirthDate", _birthDate, typeof(DateTime));
+            info.AddValue("Gender", _gender, typeof(Gender));
+            info.AddValue("Age", _age, typeof(int));
         }
     }
 }
