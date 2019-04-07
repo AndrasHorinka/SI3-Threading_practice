@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
-using SerializePeople;
 
 namespace SerializePeople.Test
 {
@@ -51,10 +46,12 @@ namespace SerializePeople.Test
         [Test]
         public void Test_PeopleDeSerialization()
         {
-            if (!File.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat"))
+            if (File.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat"))
             {
-                serialPeople.p.Serialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
+                File.Delete(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
             }
+
+            serialPeople.p.Serialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
             Person p = Person.DeSerialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
 
             bool status = true;

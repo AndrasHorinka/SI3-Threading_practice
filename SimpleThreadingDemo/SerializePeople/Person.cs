@@ -6,11 +6,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace SerializePeople
 {
     [Serializable]
-    public class Person
+    public class Person : IDeserializationCallback
     {
         private string _name;
         private DateTime _birthDate;
         private Gender _gender;
+        [NonSerialized]
         private int _age;
 
         public string Name { get => _name; set => _name = value; }
@@ -22,7 +23,6 @@ namespace SerializePeople
 
         public Person()
         {
-
         }
 
         public Person(string name, DateTime birthDate, Gender humanGender)
@@ -115,6 +115,27 @@ namespace SerializePeople
         public override string ToString()
         {
             return "Name of the person is: " + Name + " born on the " + BirthDate.ToString();
+        }
+
+        public void OnDeserialization(object sender)
+        {
+            DateTime today = DateTime.Today;
+            try
+            {
+                TimeSpan difference = today.Subtract(BirthDate);
+                this.Age = difference.Days / 365;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
+
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
         }
     }
 }
