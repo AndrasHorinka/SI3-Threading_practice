@@ -15,7 +15,7 @@ namespace SerializePeople
 
         public string Name { get => _name; set => _name = value; }
         public DateTime BirthDate { get => _birthDate; set => _birthDate = value; }
-        private Gender HumanGender { get => _gender; set => _gender = value; }
+        public Gender HumanGender { get => _gender; set => _gender = value; }
         public int Age { get => _age; set => _age = value; }
 
         public enum Gender { Male, Female }

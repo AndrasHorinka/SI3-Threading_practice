@@ -45,7 +45,42 @@ namespace SerializePeople.Test
 
             serialPeople.p.Serialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
             FileAssert.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
+            File.Delete(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
         }
+
+        [Test]
+        public void Test_PeopleDeSerialization()
+        {
+            if (!File.Exists(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat"))
+            {
+                serialPeople.p.Serialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
+            }
+            Person p = Person.DeSerialize(@"E:\OneDrive\Codecool\VisualStudio\repos\SI3 - Threading\SimpleThreadingDemo\SerializeUnitTest\streamedPerson.dat");
+
+            bool status = true;
+            if (!(p is Person))
+            {
+                status = false;
+            }
+
+            if (p.Name != "John")
+            {
+                status = false;
+            }
+
+            if (p.HumanGender != Person.Gender.Male)
+            {
+                status = false;
+            }
+
+            if (p.BirthDate != new DateTime(2000, 10, 1))
+            {
+                status = false;
+            }
+
+            Assert.True(status);
+        }
+
 
         [OneTimeTearDown]
         public void TestTearDown()
