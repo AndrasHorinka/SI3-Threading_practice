@@ -20,6 +20,11 @@ namespace SerializePeople
 
         public enum Gender { Male, Female }
 
+        public Person()
+        {
+
+        }
+
         public Person(string name, DateTime birthDate, Gender humanGender)
         {
             Name = name;
@@ -48,10 +53,7 @@ namespace SerializePeople
         public void Serialize(string output)
         {
 
-            if (File.Exists(output))
-            {
-                File.Delete(output);
-            }
+
 
             FileStream fileStream = new FileStream(output, FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
@@ -68,6 +70,38 @@ namespace SerializePeople
             {
                 fileStream.Close();
             }
+        }
+
+        public static Person DeSerialize(string input)
+        {
+            FileStream fileStream = new FileStream(input, FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            Person p = new Person();
+            try
+            {
+                p = (Person) formatter.Deserialize(fileStream);
+            }
+            catch (SerializationException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                fileStream.Close();
+            }
+
+            return p;
         }
 
         public override string ToString()

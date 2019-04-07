@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,19 @@ namespace SerializePeople.Test
         public void Test_ToStringOfPerson()
         {
             string expectedResult = @"Name of the person is: John born on the 2000-10-01";
-            Assert.That(serialPeople.p.ToString(), Is.EqualTo(expectedResult);
+            Assert.That(serialPeople.p.ToString(), Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Test_PeopleSerialization()
+        {
+            if (File.Exists("streamedPerson.*"))
+            {
+                File.Delete("streamedPerson.*");
+            }
+
+            serialPeople.p.Serialize("streamedPerson");
+            FileAssert.Exists("streamedPerson");
         }
 
         [OneTimeTearDown]
