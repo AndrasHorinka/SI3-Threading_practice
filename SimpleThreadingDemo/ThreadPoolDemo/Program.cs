@@ -20,6 +20,7 @@ namespace ThreadPoolDemo
                 ThreadPool.QueueUserWorkItem(thread, "masodik text");
                 ThreadPool.QueueUserWorkItem(thread, "harmadik text");
                 ThreadPool.QueueUserWorkItem(thread, "negyedik text");
+                Console.ReadKey();
             }
             catch (ArgumentNullException e)
             {
